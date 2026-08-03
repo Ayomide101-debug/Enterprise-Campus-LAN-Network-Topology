@@ -47,6 +47,8 @@ interface GigabitEthernet0/2
 interface Vlan1
  no ip address
  shutdown
+
+## Vlan Configurations
 !
 interface Vlan10
  mac-address 0060.4737.b001
