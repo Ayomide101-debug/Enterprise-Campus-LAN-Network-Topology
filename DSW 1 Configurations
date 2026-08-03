@@ -1,4 +1,4 @@
-#Show Running-configuration
+## Show Running-configuration
 
 interface Loopback0
  ip address 2.2.2.2 255.255.255.255
@@ -27,6 +27,87 @@ interface FastEthernet0/4
  switchport trunk encapsulation dot1q
  switchport mode trunk
 
+
+## Vlan Configurations
+
+interface GigabitEthernet0/1
+ no switchport
+ ip address 192.168.1.66 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ no switchport
+ ip address 192.168.1.77 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ mac-address 0006.2a4c.8901
+ ip address 192.168.1.1 255.255.255.248
+ standby 10 ip 192.168.1.3
+ standby 10 priority 150
+ standby 10 preempt
+!
+interface Vlan20
+ mac-address 0006.2a4c.8902
+ ip address 192.168.1.9 255.255.255.248
+ standby 20 ip 192.168.1.11
+ standby 20 preempt
+!
+interface Vlan30
+ mac-address 0006.2a4c.8903
+ ip address 192.168.1.19 255.255.255.248
+ standby 30 ip 192.168.1.19
+ standby 30 preempt
+!
+interface Vlan40
+ mac-address 0006.2a4c.8904
+ ip address 192.168.1.25 255.255.255.248
+ standby 40 ip 192.168.1.27
+ standby 40 preempt
+!
+interface Vlan50
+ mac-address 0006.2a4c.8905
+ ip address 192.168.1.33 255.255.255.248
+ standby 50 ip 192.168.1.35
+ standby 50 priority 150
+ standby 50 preempt
+!
+interface Vlan60
+ mac-address 0006.2a4c.8906
+ ip address 192.168.1.41 255.255.255.248
+ standby 60 ip 192.168.1.43
+ standby 60 preempt
+!
+interface Vlan70
+ mac-address 0006.2a4c.8907
+ ip address 192.168.1.49 255.255.255.248
+ standby 70 ip 192.168.1.51
+ standby 70 priority 150
+ standby 70 preempt
+!
+interface Vlan80
+ mac-address 0006.2a4c.8908
+ ip address 192.168.1.57 255.255.255.248
+ standby 80 ip 192.168.1.59
+!
+router ospf 1
+ router-id 2.2.2.2
+ log-adjacency-changes
+ passive-interface Vlan10
+ passive-interface Vlan20
+ passive-interface Vlan30
+ passive-interface Vlan40
+ passive-interface Vlan50
+ passive-interface Vlan60
+ passive-interface Vlan70
+ passive-interface Vlan80
+ network 192.168.1.0 0.0.0.255 area 0
 
 # IP Routes
 
