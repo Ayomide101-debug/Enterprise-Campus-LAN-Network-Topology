@@ -1,0 +1,72 @@
+## Show running configs 
+
+hostname ASW4
+!
+!
+!
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 70,80
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ switchport access vlan 70
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security violation restrict 
+ switchport port-security mac-address sticky 0002.1763.9D63
+!
+interface FastEthernet0/3
+ switchport access vlan 70
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security violation restrict 
+ switchport port-security mac-address sticky 0001.631B.A671
+!
+interface FastEthernet0/4
+ switchport access vlan 80
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security violation restrict 
+ switchport port-security mac-address sticky 0001.42AD.56C6
+!
+interface FastEthernet0/5
+ switchport access vlan 80
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security violation restrict 
+ switchport port-security mac-address sticky 0050.0FB0.4966
+!
+interface FastEthernet0/6
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 70,80
+ switchport mode trunk
+
+## Show interfaces Trunk
+
+ASW4#sh int tr
+Port        Mode         Encapsulation  Status        Native vlan
+Fa0/1       on           802.1q         trunking      99
+Fa0/6       on           802.1q         trunking      99
+
+Port        Vlans allowed on trunk
+Fa0/1       70,80
+Fa0/6       70,80
+
+Port        Vlans allowed and active in management domain
+Fa0/1       70,80
+Fa0/6       70,80
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Fa0/1       70,80
+Fa0/6       70,80
