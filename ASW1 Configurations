@@ -1,0 +1,79 @@
+## Show Configurations
+
+!
+hostname ASW1
+!
+!
+!
+no ip domain-lookup
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ switchport access vlan 10
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security violation restrict 
+ switchport port-security mac-address sticky 00E0.A32E.914B
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ switchport access vlan 10
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security violation restrict 
+ switchport port-security mac-address sticky 00E0.F790.6937
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ switchport access vlan 20
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security violation restrict 
+ switchport port-security mac-address sticky 00E0.8F76.4B1C
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ switchport access vlan 20
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security violation restrict 
+ switchport port-security mac-address sticky 0007.EC8C.B354
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20
+ switchport mode trunk
+
+## Interfaces Trunk
+
+ASW1#sh int tr
+Port        Mode         Encapsulation  Status        Native vlan
+Fa0/1       on           802.1q         trunking      99
+Fa0/6       on           802.1q         trunking      99
+
+Port        Vlans allowed on trunk
+Fa0/1       10,20
+Fa0/6       10,20
+
+Port        Vlans allowed and active in management domain
+Fa0/1       10,20
+Fa0/6       10,20
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Fa0/1       10,20
+Fa0/6       10,20
+
