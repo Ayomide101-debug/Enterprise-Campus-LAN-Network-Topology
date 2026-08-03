@@ -12,8 +12,7 @@ This project was built as part of my hands-on CCNA 200-301 preparation and netwo
 | Tier | Devices                          |                       Role                                   |
 |------|----------------------------------|--------------------------------------------------------------|
 | Core | 1x Layer 3 switch (`CORE-SW`)    | Single routed exit point to the server subnet; OSPF backbone |
-| Distribution | 2x Layer 3 switches      | Inter-VLAN routing, HSRP gateway redundancy, STP root per VLAN, peer link
-               |(`DIST1-SW`, `DIST2-SW`)  |
+| Distribution | 2x Layer 3 switches (`DIST1-SW`, `DIST2-SW`)       | Inter-VLAN routing, HSRP gateway redundancy, STP root per VLAN, peer link
 | Access | 4x Layer 2 switches (`ASW1`–`ASW4`) | End-user connectivity, dual-homed trunk uplinks, port security |
 | Endpoints | 1x server, 16x PCs | 8 VLANs, 2 hosts each |
 
@@ -54,8 +53,6 @@ Every access switch is dual-homed — one trunk to each distribution switch — 
 | 60 | 192.168.1.40/29 | .41 | .42 | .43 | DIST2 |
 | 70 | 192.168.1.48/29 | .49 | .50 | .51 | DIST1 |
 | 80 | 192.168.1.56/29 | .57 | .58 | .59 | DIST2 |
-
-Full per-host addressing (PCs, exact ports, HSRP priorities) is in [`docs/build-guide.md`](docs/build-guide.md).
 
 ## Verification performed
 
