@@ -1,0 +1,72 @@
+## Show Running-configs
+
+hostname ASW3
+!
+!
+!
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 50,60
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ switchport access vlan 50
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security violation restrict 
+ switchport port-security mac-address sticky 00E0.B0C4.2A3D
+!
+interface FastEthernet0/3
+ switchport access vlan 50
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security violation restrict 
+ switchport port-security mac-address sticky 0001.C781.0535
+!
+interface FastEthernet0/4
+ switchport access vlan 60
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security violation restrict 
+ switchport port-security mac-address sticky 000A.4105.0EAC
+!
+interface FastEthernet0/5
+ switchport access vlan 60
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 00D0.9799.D179
+!
+interface FastEthernet0/6
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 50,60
+ switchport mode trunk
+
+## Interfaces Trunk Configs
+
+
+ASW3(config)#do sh int tr
+Port        Mode         Encapsulation  Status        Native vlan
+Fa0/1       on           802.1q         trunking      99
+Fa0/6       on           802.1q         trunking      99
+
+Port        Vlans allowed on trunk
+Fa0/1       50,60
+Fa0/6       50,60
+
+Port        Vlans allowed and active in management domain
+Fa0/1       50,60
+Fa0/6       50,60
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Fa0/1       50,60
+Fa0/6       50,60
